@@ -78,6 +78,14 @@ img[data-zoom]{cursor:zoom-in}
 [data-lp-base]::before{content:'';position:absolute;top:0;left:50%;width:16%;height:6px;margin-left:-8%;background:#8d919a;border-radius:0 0 8px 8px}
 :root[data-theme="dark"] [data-lp-base]{background:linear-gradient(180deg,#3a3e47,#23262d)}
 :root[data-theme="dark"] [data-lp-base]::before{background:#171a1f}
+[data-devices]{position:relative;padding:4px 0 18px;align-self:center;width:100%}
+[data-phone]{position:absolute;right:0;bottom:0;width:23%;background:#0d0e11;border:1px solid #23262d;border-radius:16px;padding:4px;box-shadow:0 14px 28px rgba(20,22,28,.28)}
+[data-phone]::before{content:'';position:absolute;top:7px;left:50%;width:26%;height:5px;margin-left:-13%;border-radius:99px;background:#0d0e11;z-index:2}
+[data-ph-screen]{aspect-ratio:390/844;border-radius:12px}
+[data-ph-screen] iframe{width:390px;height:844px;transform:scale(tan(atan2(100cqw,390px)))}
+[data-ph-screen]::before{content:'Loading…';font-size:10px}
+[data-ph-screen] [data-lp-overlay]{padding-bottom:8px}
+[data-ph-screen] [data-lp-overlay] span{padding:6px 9px;font-size:10px}
 @media (hover:none){[data-lp-overlay]{opacity:1}}
 main>div{animation:om-rise .5s cubic-bezier(.2,.7,.3,1) both}
 main h1{animation:om-rise .55s cubic-bezier(.2,.7,.3,1) both .04s}
@@ -201,7 +209,13 @@ aside{animation:om-fade .6s ease both}
               <button data-view="projects" onClick="{{ nav }}" style="border:0;background:transparent;color:var(--accent-ink);padding:0;font-weight:700;font-size:12.5px;font-family:'Plus Jakarta Sans',system-ui,sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:7px;white-space:nowrap">View all projects<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style="display:block"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button>
             </div>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;min-width:0">
-              <div style="border-radius:14px;background:var(--inset);border:1px solid var(--line2);overflow:hidden;aspect-ratio:4/3"><img data-zoom="1" decoding="async" data-full="assets/proj-akpa-sales.png" src="assets/thumbs/proj-akpa-sales.jpg" alt="Amazin Kids Paradise Academy funnel" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></div>
+              <div data-devices="1">
+                <div data-laptop="1" style="width:84%">
+                  <div data-lp-lid="1"><div data-lp-screen="1"><iframe src="https://shop.akpadaycareblueprint.com/offer" title="Amazin Kids Paradise Academy — live funnel (desktop)" loading="lazy" tabIndex="-1" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" referrerPolicy="no-referrer-when-downgrade"></iframe><button data-lp-overlay="1" aria-label="Explore the Amazin Kids Paradise Academy funnel on desktop"><span>Click to explore</span></button></div></div>
+                  <div data-lp-base="1"></div>
+                </div>
+                <div data-phone="1"><div data-lp-screen="1" data-ph-screen="1"><iframe src="https://shop.akpadaycareblueprint.com/offer" title="Amazin Kids Paradise Academy — live funnel (mobile)" loading="lazy" tabIndex="-1" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" referrerPolicy="no-referrer-when-downgrade"></iframe><button data-lp-overlay="1" aria-label="Explore the Amazin Kids Paradise Academy funnel on mobile"><span>Explore</span></button></div></div>
+              </div>
               <div style="min-width:0;display:flex;flex-direction:column">
                 <h3 style="font-size:19px;font-weight:800;letter-spacing:-.025em;margin:0">Amazin Kids Paradise Academy</h3>
                 <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px"><span style="border:1px solid var(--line);background:var(--panel2);border-radius:6px;padding:5px 9px;font-size:10.5px;font-weight:800;letter-spacing:.06em">FUNNEL</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:6px;padding:5px 9px;font-size:10.5px;font-weight:800;letter-spacing:.06em">CRM</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:6px;padding:5px 9px;font-size:10.5px;font-weight:800;letter-spacing:.06em">AUTOMATION</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:6px;padding:5px 9px;font-size:10.5px;font-weight:800;letter-spacing:.06em">CHECKOUT</span></div>
