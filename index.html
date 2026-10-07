@@ -111,6 +111,16 @@ article [data-devices]{max-width:420px;margin-inline:auto}
 [data-ph-screen] [data-lp-overlay]{padding-bottom:8px}
 [data-ph-screen] [data-lp-overlay] span{padding:6px 9px;font-size:10px}
 @media (hover:none){[data-lp-overlay]{opacity:1}}
+[data-mail-single]{flex:none;width:100%;max-width:210px;margin:0 auto !important}
+@container (max-width:715px){[data-pkg-top]{grid-template-columns:1fr !important}[data-mail-single]{max-width:180px}}
+/* Dark mode: lighter device frames so mockups stand out from dark cards */
+:root[data-theme="dark"] [data-lp-lid]{background:#2a2e36;border-color:#4a505c;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+:root[data-theme="dark"] [data-lp-base]{background:linear-gradient(180deg,#6b717d,#3f444e)}
+:root[data-theme="dark"] [data-lp-base]::before{background:#2a2e36}
+:root[data-theme="dark"] [data-phone]{background:#2a2e36;border-color:#4a505c;box-shadow:0 14px 30px rgba(0,0,0,.55)}
+:root[data-theme="dark"] [data-phone]::before{background:#2a2e36}
+:root[data-theme="dark"] [data-mail-screen]{border-color:#2a2e36;outline-color:#4a505c;box-shadow:0 14px 30px rgba(0,0,0,.55)}
+:root[data-theme="dark"] [data-laptop]{filter:drop-shadow(0 18px 34px rgba(0,0,0,.6))}
 [data-span2]{grid-column:span 2}
 [data-span2] [data-mails]{padding-top:0}
 @container (max-width:715px){[data-span2]{grid-column:auto}}
@@ -527,7 +537,7 @@ aside{animation:om-fade .6s ease both}
 
         <div style="container-type:inline-size"><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(max(min(100%,340px),calc((100% - 36px) / 3)),1fr));gap:18px;margin-bottom:38px">
           <article data-card="1" data-span2="1" style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:18px;min-width:0;display:flex;flex-direction:column">
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px 28px;align-items:center">
+            <div data-pkg-top="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(150px,26%);gap:18px 32px;align-items:center">
               <div style="min-width:0">
               <div data-devices="1">
                 <div data-laptop="1" style="width:84%">
@@ -539,13 +549,8 @@ aside{animation:om-fade .6s ease both}
                 <div style="font-size:10.5px;font-weight:700;color:var(--mute);text-align:center;margin-top:8px">Event page &amp; registration funnel</div>
               </div>
               <div style="min-width:0">
-              <div data-mails="1">
-                  <figure data-mail="1"><div data-mail-screen="1"><img data-zoom="1" decoding="async" loading="lazy" src="assets/email-tim-1-invite.jpg" data-full="assets/email-tim-1-invite.jpg" alt="The Inclusive Movement email — Invitation" style="animation-delay:-0.0s"></div><figcaption>01 · Invite</figcaption></figure>
-                  <figure data-mail="1"><div data-mail-screen="1"><img data-zoom="1" decoding="async" loading="lazy" src="assets/email-tim-2-confirmed.jpg" data-full="assets/email-tim-2-confirmed.jpg" alt="The Inclusive Movement email — Registration confirmed" style="animation-delay:-3.5s"></div><figcaption>02 · Confirmed</figcaption></figure>
-                  <figure data-mail="1"><div data-mail-screen="1"><img data-zoom="1" decoding="async" loading="lazy" src="assets/email-tim-3-reminder.jpg" data-full="assets/email-tim-3-reminder.jpg" alt="The Inclusive Movement email — Day-before reminder" style="animation-delay:-7.0s"></div><figcaption>03 · Reminder</figcaption></figure>
-                  <figure data-mail="1"><div data-mail-screen="1"><img data-zoom="1" decoding="async" loading="lazy" src="assets/email-tim-4-thanks.jpg" data-full="assets/email-tim-4-thanks.jpg" alt="The Inclusive Movement email — Thank you" style="animation-delay:-10.5s"></div><figcaption>04 · Thanks</figcaption></figure>
-              </div>
-                <div style="font-size:10.5px;font-weight:700;color:var(--mute);text-align:center;margin-top:2px">4-email sequence · tap an email to read it</div>
+              <figure data-mail="1" data-mail-single="1"><div data-mail-screen="1"><img data-zoom="1" decoding="async" loading="lazy" src="assets/email-tim-2-confirmed.jpg" data-full="assets/email-tim-2-confirmed.jpg" alt="The Inclusive Movement email — Registration confirmed"></div></figure>
+                <div style="font-size:10.5px;font-weight:700;color:var(--mute);text-align:center;margin-top:2px">Event email · tap to read</div>
               </div>
             </div>
             <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink);margin-top:22px">COMPLETE EVENT PACKAGE · HOLIGENIX WELLNESS FOUNDATION</div>
