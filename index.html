@@ -111,6 +111,10 @@ article [data-devices]{max-width:420px;margin-inline:auto}
 [data-ph-screen] [data-lp-overlay]{padding-bottom:8px}
 [data-ph-screen] [data-lp-overlay] span{padding:6px 9px;font-size:10px}
 @media (hover:none){[data-lp-overlay]{opacity:1}}
+[data-span2]{grid-column:span 2}
+[data-span2] [data-mails]{padding-top:0}
+@container (max-width:715px){[data-span2]{grid-column:auto}}
+@media (min-width:1000px){[data-about]{grid-template-columns:minmax(0,34%) minmax(0,1fr) !important}}
 /* Laptop screens: the home dashboard fits one screen, no scrolling */
 @media (min-width:1081px) and (min-height:600px){
   main:has([data-home]){padding-top:18px !important;padding-bottom:14px !important}
@@ -521,36 +525,49 @@ aside{animation:om-fade .6s ease both}
         <h1 style="font-size:clamp(38px,4.6vw,58px);font-weight:800;letter-spacing:-.035em;line-height:1.04;margin:20px 0 0">Projects</h1>
         <p style="color:var(--mute);font-size:16px;max-width:660px;margin:14px 0 30px">Websites, landing pages and funnels built end to end — the live ones run in the laptops below, followed by sales pages, checkouts and upsells wired to the CRM behind them.</p>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(max(min(100%,340px),calc((100% - 36px) / 3)),1fr));gap:18px;margin-bottom:38px">
-          <article data-card="1" style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:18px;min-width:0;display:flex;flex-direction:column">
-            <div data-devices="1">
-              <div data-laptop="1" style="width:84%">
-                <div data-lp-lid="1"><div data-lp-screen="1"><iframe src="https://events.holigenixwellnessfoundation.com/the-inclusive-movement---registration-page" title="The Inclusive Movement — live site" loading="lazy" tabIndex="-1" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" referrerPolicy="no-referrer-when-downgrade"></iframe><button data-lp-overlay="1" aria-label="Explore The Inclusive Movement inside the laptop"><span>Click to explore</span></button></div></div>
-                <div data-lp-base="1"></div>
+        <div style="container-type:inline-size"><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(max(min(100%,340px),calc((100% - 36px) / 3)),1fr));gap:18px;margin-bottom:38px">
+          <article data-card="1" data-span2="1" style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:18px;min-width:0;display:flex;flex-direction:column">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px 28px;align-items:center">
+              <div style="min-width:0">
+              <div data-devices="1">
+                <div data-laptop="1" style="width:84%">
+                  <div data-lp-lid="1"><div data-lp-screen="1"><iframe src="https://events.holigenixwellnessfoundation.com/the-inclusive-movement---registration-page" title="The Inclusive Movement — live site" loading="lazy" tabIndex="-1" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" referrerPolicy="no-referrer-when-downgrade"></iframe><button data-lp-overlay="1" aria-label="Explore The Inclusive Movement inside the laptop"><span>Click to explore</span></button></div></div>
+                  <div data-lp-base="1"></div>
+                </div>
+                <div data-phone="1"><div data-lp-screen="1" data-ph-screen="1"><iframe src="https://events.holigenixwellnessfoundation.com/the-inclusive-movement---registration-page" title="The Inclusive Movement — live site (mobile)" loading="lazy" tabIndex="-1" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" referrerPolicy="no-referrer-when-downgrade"></iframe><button data-lp-overlay="1" aria-label="Explore The Inclusive Movement on mobile"><span>Explore</span></button></div></div>
               </div>
-              <div data-phone="1"><div data-lp-screen="1" data-ph-screen="1"><iframe src="https://events.holigenixwellnessfoundation.com/the-inclusive-movement---registration-page" title="The Inclusive Movement — live site (mobile)" loading="lazy" tabIndex="-1" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" referrerPolicy="no-referrer-when-downgrade"></iframe><button data-lp-overlay="1" aria-label="Explore The Inclusive Movement on mobile"><span>Explore</span></button></div></div>
+                <div style="font-size:10.5px;font-weight:700;color:var(--mute);text-align:center;margin-top:8px">Event page &amp; registration funnel</div>
+              </div>
+              <div style="min-width:0">
+              <div data-mails="1">
+                  <figure data-mail="1"><div data-mail-screen="1"><img data-zoom="1" decoding="async" loading="lazy" src="assets/email-tim-1-invite.jpg" data-full="assets/email-tim-1-invite.jpg" alt="The Inclusive Movement email — Invitation" style="animation-delay:-0.0s"></div><figcaption>01 · Invite</figcaption></figure>
+                  <figure data-mail="1"><div data-mail-screen="1"><img data-zoom="1" decoding="async" loading="lazy" src="assets/email-tim-2-confirmed.jpg" data-full="assets/email-tim-2-confirmed.jpg" alt="The Inclusive Movement email — Registration confirmed" style="animation-delay:-3.5s"></div><figcaption>02 · Confirmed</figcaption></figure>
+                  <figure data-mail="1"><div data-mail-screen="1"><img data-zoom="1" decoding="async" loading="lazy" src="assets/email-tim-3-reminder.jpg" data-full="assets/email-tim-3-reminder.jpg" alt="The Inclusive Movement email — Day-before reminder" style="animation-delay:-7.0s"></div><figcaption>03 · Reminder</figcaption></figure>
+                  <figure data-mail="1"><div data-mail-screen="1"><img data-zoom="1" decoding="async" loading="lazy" src="assets/email-tim-4-thanks.jpg" data-full="assets/email-tim-4-thanks.jpg" alt="The Inclusive Movement email — Thank you" style="animation-delay:-10.5s"></div><figcaption>04 · Thanks</figcaption></figure>
+              </div>
+                <div style="font-size:10.5px;font-weight:700;color:var(--mute);text-align:center;margin-top:2px">4-email sequence · tap an email to read it</div>
+              </div>
             </div>
-            <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink);margin-top:22px">EVENT FUNNEL · HOLIGENIX WELLNESS FOUNDATION</div>
+            <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink);margin-top:22px">COMPLETE EVENT PACKAGE · HOLIGENIX WELLNESS FOUNDATION</div>
             <h3 style="font-size:23px;font-weight:800;letter-spacing:-.025em;margin:8px 0 8px">The Inclusive Movement</h3>
-            <p style="color:var(--mute);font-size:13.5px;margin:0">A registration funnel for a Muscular Dystrophy Awareness Month event: event page with date, venue, host and special guest, a three-field sign-up form, and a thank-you page with a digital ticket, Google and Apple calendar adds, and a share prompt.</p>
+            <p style="color:var(--mute);font-size:13.5px;margin:0">Everything behind a Muscular Dystrophy Awareness Month event — the page people register on, the emails that keep them coming, and the automation that sends each one at the right moment.</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;margin-top:16px">
+              <div style="padding:14px 16px;border-radius:14px;background:var(--panel2);border:1px solid var(--line);min-width:0">
+                <div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;font-weight:800;color:var(--accent-ink)">01</span><span style="font-weight:800;font-size:14px">Funnel</span></div>
+                <div style="font-size:12.5px;color:var(--mute);margin-top:6px;line-height:1.5">Event page with date, venue, host and special guest, a three-field sign-up form, and a thank-you page with a digital ticket, Google and Apple calendar adds, and a share prompt.</div>
+              </div>
+              <div style="padding:14px 16px;border-radius:14px;background:var(--panel2);border:1px solid var(--line);min-width:0">
+                <div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;font-weight:800;color:var(--accent-ink)">02</span><span style="font-weight:800;font-size:14px">Email sequence</span></div>
+                <div style="font-size:12.5px;color:var(--mute);margin-top:6px;line-height:1.5">Four branded emails — invitation, registration confirmed, day-before reminder and thank-you — each with the date, time and venue block, a calendar add and the host cards, personalised with the contact’s first name.</div>
+              </div>
+              <div style="padding:14px 16px;border-radius:14px;background:var(--panel2);border:1px solid var(--line);min-width:0">
+                <div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;font-weight:800;color:var(--accent-ink)">03</span><span style="font-weight:800;font-size:14px">Automation</span></div>
+                <div style="font-size:12.5px;color:var(--mute);margin-top:6px;line-height:1.5">The invite goes to the list; a sign-up triggers the confirmation instantly; the reminder sends the day before the event; the thank-you follows once it’s over. No one sends anything by hand.</div>
+              </div>
+            </div>
             <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:auto;padding-top:16px">
-              <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Event page</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Registration</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Thank-you</span></div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Funnel</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Email sequence</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Automation</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Calendar adds</span></div>
               <a href="https://events.holigenixwellnessfoundation.com/the-inclusive-movement---registration-page" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);padding:9px 14px;border-radius:999px;font-weight:700;font-size:12.5px;line-height:1.15;white-space:nowrap;box-shadow:var(--hl)">Visit live site<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style="display:block"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
-            </div>
-          </article>
-          <article data-card="1" style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:18px;min-width:0;display:flex;flex-direction:column">
-            <div data-mails="1">
-                <figure data-mail="1"><div data-mail-screen="1"><img data-zoom="1" decoding="async" loading="lazy" src="assets/email-tim-1-invite.jpg" data-full="assets/email-tim-1-invite.jpg" alt="The Inclusive Movement email — Invitation" style="animation-delay:-0.0s"></div><figcaption>01 · Invite</figcaption></figure>
-                <figure data-mail="1"><div data-mail-screen="1"><img data-zoom="1" decoding="async" loading="lazy" src="assets/email-tim-2-confirmed.jpg" data-full="assets/email-tim-2-confirmed.jpg" alt="The Inclusive Movement email — Registration confirmed" style="animation-delay:-3.5s"></div><figcaption>02 · Confirmed</figcaption></figure>
-                <figure data-mail="1"><div data-mail-screen="1"><img data-zoom="1" decoding="async" loading="lazy" src="assets/email-tim-3-reminder.jpg" data-full="assets/email-tim-3-reminder.jpg" alt="The Inclusive Movement email — Day-before reminder" style="animation-delay:-7.0s"></div><figcaption>03 · Reminder</figcaption></figure>
-                <figure data-mail="1"><div data-mail-screen="1"><img data-zoom="1" decoding="async" loading="lazy" src="assets/email-tim-4-thanks.jpg" data-full="assets/email-tim-4-thanks.jpg" alt="The Inclusive Movement email — Thank you" style="animation-delay:-10.5s"></div><figcaption>04 · Thanks</figcaption></figure>
-            </div>
-            <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink);margin-top:22px">EMAIL SEQUENCE · HOLIGENIX WELLNESS FOUNDATION</div>
-            <h3 style="font-size:23px;font-weight:800;letter-spacing:-.025em;margin:8px 0 8px">The Inclusive Movement — Event emails</h3>
-            <p style="color:var(--mute);font-size:13.5px;margin:0">Four branded emails around the event: an invitation, a registration confirmation, a day-before reminder and a thank-you after. Each carries the date, time and venue block, a calendar add and the host cards, personalised with the contact’s first name.</p>
-            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:auto;padding-top:16px">
-              <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Email design</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">4-email sequence</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Automation</span></div>
-              <span style="font-size:12px;font-weight:700;color:var(--mute)">Tap an email to read it</span>
             </div>
           </article>
           <article data-card="1" style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:18px;min-width:0;display:flex;flex-direction:column">
@@ -664,7 +681,7 @@ aside{animation:om-fade .6s ease both}
               <span style="font-size:12px;font-weight:700;color:var(--mute)">Tap the screen to enlarge</span>
             </div>
           </article>
-        </div>
+        </div></div>
 
         <div style="display:flex;align-items:baseline;gap:4px 12px;flex-wrap:wrap;margin:0 0 16px">
           <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">FUNNELS &amp; LANDING PAGES</div>
@@ -1043,49 +1060,43 @@ aside{animation:om-fade .6s ease both}
         <button data-view="home" onClick="{{ nav }}" style="border:1px solid var(--line);background:var(--panel);color:var(--ink2);border-radius:999px;padding:8px 14px;font-weight:700;font-size:12px;line-height:1.15;font-family:'Plus Jakarta Sans',system-ui,sans-serif;white-space:nowrap;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:var(--shadow-sm),var(--hl)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style="display:block"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>Back</button>
         <h1 style="font-size:clamp(38px,4.6vw,58px);font-weight:800;letter-spacing:-.035em;line-height:1.04;margin:20px 0 0">About me</h1>
 
-        <div data-about="1" style="margin-top:26px;display:flex;flex-direction:column;gap:14px">
-          <section style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:22px 44px;align-items:start">
-            <div style="min-width:0">
-              <p style="font-size:23px;line-height:1.3;margin:0;text-wrap:pretty">I'm Alvin Wee — a GoHighLevel systems builder. Funnels, CRM, automation, and the pages in front of them, built to run without being chased.</p>
-              <p style="font-size:15px;color:var(--ink);font-weight:600;margin:22px 0 0;padding-top:18px;border-top:1px solid var(--line2);text-wrap:pretty">Because the goal was never a prettier page. It's more calls booked, less chased by hand, and a business that keeps moving whether or not someone remembers to follow up.</p>
+        <div data-about="1" style="margin-top:26px;background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));overflow:hidden">
+          <div data-about-photo="1" style="position:relative;min-height:360px;background:var(--inset)">
+            <img src="assets/thumbs/portrait.jpg" alt="Alvin Wee" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block">
+            <div style="position:absolute;left:0;right:0;bottom:0;padding:60px 22px 20px;background:linear-gradient(180deg,transparent,rgba(8,9,12,.82));color:#fff">
+              <div style="font-weight:800;font-size:22px;letter-spacing:-.02em">Alvin Wee</div>
+              <div style="font-size:13px;opacity:.82;margin-top:3px">GoHighLevel systems builder · Remote</div>
             </div>
-            <div style="min-width:0">
-              <p style="font-size:15px;color:var(--mute);margin:0;text-wrap:pretty">My background is in IT implementation, operations, and marketing systems, so I don't just design screens — I understand the process behind them: where leads leak, where manual work piles up, and what both are quietly costing you.</p>
+          </div>
+          <div data-about-body="1" style="padding:28px;display:flex;flex-direction:column;gap:22px;min-width:0">
+            <div>
+              <p style="font-size:clamp(20px,1.7vw,24px);line-height:1.3;font-weight:500;margin:0;text-wrap:pretty">I'm Alvin Wee — a GoHighLevel systems builder. Funnels, CRM, automation, and the pages in front of them, built to run without being chased.</p>
+              <p style="font-size:15px;color:var(--mute);margin:16px 0 0;text-wrap:pretty">My background is in IT implementation, operations, and marketing systems, so I don't just design screens — I understand the process behind them: where leads leak, where manual work piles up, and what both are quietly costing you.</p>
               <p style="font-size:15px;color:var(--mute);margin:14px 0 0;text-wrap:pretty">So I start with how you actually sell, then build the system around it — not a default template you spend the next year working around.</p>
             </div>
-          </section>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;align-items:stretch">
-            <section style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:0;display:grid;grid-template-columns:minmax(0,46%) minmax(0,1fr);align-items:stretch;overflow:hidden;min-width:0;min-height:210px">
-              <div style="position:relative;background:var(--inset);border-right:1px solid var(--line)">
-                <img src="assets/thumbs/portrait.jpg" alt="Alvin Wee" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:14px 28px;padding-top:20px;border-top:1px solid var(--line2)">
+              <div style="min-width:0">
+                <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">WHERE I COME FROM</div>
+                <div style="margin-top:6px;display:flex;flex-direction:column">
+                <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line2);font-weight:600;font-size:14px"><span style="width:6px;height:6px;border-radius:999px;background:var(--accent)"></span>IT implementation</div>
+                <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line2);font-weight:600;font-size:14px"><span style="width:6px;height:6px;border-radius:999px;background:var(--accent)"></span>Operations</div>
+                <div style="display:flex;align-items:center;gap:10px;padding:8px 0;font-weight:600;font-size:14px"><span style="width:6px;height:6px;border-radius:999px;background:var(--accent)"></span>Marketing systems</div>
               </div>
-              <div style="min-width:0;padding:18px 20px;display:flex;flex-direction:column;justify-content:center">
-                <div style="font-weight:800;font-size:18px;letter-spacing:-.02em">Alvin Wee</div>
-                <div style="font-size:13px;color:var(--mute);margin-top:4px">GoHighLevel systems builder</div>
-                <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:6px"><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:5px 10px;font-size:11.5px;font-weight:700">Remote</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:5px 10px;font-size:11.5px;font-weight:700">Open to projects</span></div>
               </div>
-            </section>
-            <section style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:18px 20px;min-width:0">
-              <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">WHERE I COME FROM</div>
-              <div style="margin-top:12px;display:flex;flex-direction:column">
-                <div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line2);font-weight:600;font-size:14px"><span style="width:6px;height:6px;border-radius:999px;background:var(--accent)"></span>IT implementation</div>
-                <div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line2);font-weight:600;font-size:14px"><span style="width:6px;height:6px;border-radius:999px;background:var(--accent)"></span>Operations</div>
-                <div style="display:flex;align-items:center;gap:10px;padding:10px 0;font-weight:600;font-size:14px"><span style="width:6px;height:6px;border-radius:999px;background:var(--accent)"></span>Marketing systems</div>
+              <div style="min-width:0">
+                <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">HOW I WORK</div>
+                <div style="margin-top:2px;display:flex;flex-direction:column">
+                  <div style="padding:8px 0;border-bottom:1px solid var(--line2);"><div style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font-size:12px;font-weight:800;color:var(--accent-ink)">01</span><div style="font-weight:700;font-size:14px">A 20-minute systems audit</div><div style="font-size:12.5px;color:var(--mute);line-height:1.45">How you sell now, and where it leaks.</div></div></div>
+                  <div style="padding:8px 0;border-bottom:1px solid var(--line2);"><div style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font-size:12px;font-weight:800;color:var(--accent-ink)">02</span><div style="font-weight:700;font-size:14px">A build plan</div><div style="font-size:12.5px;color:var(--mute);line-height:1.45">What to build first and what it changes.</div></div></div>
+                  <div style="padding:8px 0;"><div style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font-size:12px;font-weight:800;color:var(--accent-ink)">03</span><div style="font-weight:700;font-size:14px">The build</div><div style="font-size:12.5px;color:var(--mute);line-height:1.45">Pages, CRM and automation, handed over working.</div></div></div>
+                </div>
               </div>
-            </section>
-            <section style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:18px 20px;min-width:0">
-              <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">HOW I WORK</div>
-              <div style="margin-top:4px;display:flex;flex-direction:column">
-                <div style="padding:10px 0;border-bottom:1px solid var(--line2);"><div style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font-size:12px;font-weight:800;color:var(--accent-ink)">01</span><div style="font-weight:700;font-size:14px">A 20-minute systems audit</div><div style="font-size:12.5px;color:var(--mute);line-height:1.45">How you sell now, and where it leaks.</div></div></div>
-                <div style="padding:10px 0;border-bottom:1px solid var(--line2);"><div style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font-size:12px;font-weight:800;color:var(--accent-ink)">02</span><div style="font-weight:700;font-size:14px">A build plan</div><div style="font-size:12.5px;color:var(--mute);line-height:1.45">What to build first and what it changes.</div></div></div>
-                <div style="padding:10px 0;"><div style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font-size:12px;font-weight:800;color:var(--accent-ink)">03</span><div style="font-weight:700;font-size:14px">The build</div><div style="font-size:12.5px;color:var(--mute);line-height:1.45">Pages, CRM and automation, handed over working.</div></div></div>
-              </div>
-            </section>
+            </div>
+            <div style="margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:14px 24px;flex-wrap:wrap;padding:16px 18px;border-radius:16px;background:var(--panel2);border:1px solid var(--line)">
+              <p style="font-size:14.5px;color:var(--ink);font-weight:600;margin:0;flex:1 1 280px;text-wrap:pretty">Because the goal was never a prettier page. It's more calls booked, less chased by hand, and a business that keeps moving whether or not someone remembers to follow up.</p>
+              <button data-view="contact" onClick="{{ nav }}" style="flex:none;background:var(--accent);color:#fff;border:0;padding:12px 16px;border-radius:999px;font-weight:700;font-size:13px;line-height:1.15;font-family:'Plus Jakarta Sans',system-ui,sans-serif;white-space:nowrap;cursor:pointer;display:inline-flex;align-items:center;gap:8px">Work with me<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style="display:block"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></button>
+            </div>
           </div>
-          <section style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px 24px;flex-wrap:wrap">
-            <div style="font-size:20px;font-weight:800;letter-spacing:-.025em;line-height:1.2">Systems that keep selling after the call ends.</div>
-            <button data-view="contact" onClick="{{ nav }}" style="align-self:center;background:var(--accent);color:#fff;border:0;padding:12px 16px;border-radius:999px;font-weight:700;font-size:13px;line-height:1.15;font-family:'Plus Jakarta Sans',system-ui,sans-serif;white-space:nowrap;cursor:pointer;display:inline-flex;align-items:center;gap:8px">Work with me<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style="display:block"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></button>
-          </section>
         </div>
       </div>
       </sc-if>
