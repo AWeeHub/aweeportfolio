@@ -75,6 +75,36 @@ a:hover{color:var(--accent)}
 [data-vmarquee]:hover{animation-play-state:paused}
 [data-tmarquee]{-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
 [data-tmarquee] [data-card]:hover{transform:translateY(-4px)}
+/* Results + flow diagrams */
+@keyframes om-bar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+[data-res]{background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-sm),var(--hl);padding:22px;min-width:0;display:flex;flex-direction:column;position:relative;overflow:hidden}
+[data-res]::before{content:'';position:absolute;inset:-40% -20% auto auto;width:70%;height:90%;background:radial-gradient(closest-side,color-mix(in oklch,var(--accent) 22%,transparent),transparent);pointer-events:none}
+[data-res-stats]{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px;position:relative}
+[data-res-stat]{background:var(--panel2);border:1px solid var(--line);border-radius:16px;padding:14px 14px 12px}
+[data-res-stat] b{display:block;font-size:clamp(30px,3.4vw,42px);font-weight:800;letter-spacing:-.04em;line-height:1;background:linear-gradient(160deg,var(--accent2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+[data-res-stat] span{display:block;font-size:12.5px;color:var(--mute);margin-top:7px;line-height:1.35}
+[data-ladder]{margin-top:18px;display:flex;flex-direction:column;gap:9px;position:relative}
+[data-rung]{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr) 44px;align-items:center;gap:10px;font-size:12.5px;font-weight:700}
+[data-rung]>div{height:10px;border-radius:999px;background:var(--inset);overflow:hidden}
+[data-rung]>div>span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent2),var(--accent));transform-origin:left;animation:om-bar 1.2s cubic-bezier(.2,.7,.3,1) both .2s}
+[data-rung]>em{font-style:normal;text-align:right;color:var(--accent-ink);font-weight:800}
+[data-proof]{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+[data-proof]>span{display:inline-flex;align-items:baseline;gap:6px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:12px;color:var(--mute);box-shadow:var(--hl)}
+[data-proof]>span b{color:var(--accent-ink);font-size:13.5px;font-weight:800}
+[data-proof]>button{border:0;background:none;color:var(--accent-ink);font:800 12px/1.2 'Plus Jakarta Sans',system-ui,sans-serif;cursor:pointer;padding:6px 4px;display:inline-flex;align-items:center;gap:6px}
+[data-wf]{width:100%;box-sizing:border-box;align-self:stretch;min-height:300px;border-radius:14px;border:1px solid var(--line2);background:var(--inset) radial-gradient(color-mix(in oklch,var(--mute) 28%,transparent) 1px,transparent 1.2px) 0 0/14px 14px;padding:14px 12px;display:flex;flex-direction:column;justify-content:safe center;overflow:hidden}
+[data-fn]{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px 9px;position:relative;line-height:1.25;min-width:0}
+[data-fn] small{display:block;font-size:10px;font-weight:600;color:var(--mute)}
+[data-fn]+[data-fn],[data-fbr]+[data-fn],[data-fn]+[data-fbr],[data-fpair]+[data-fn]{margin-top:9px}
+[data-fn]+[data-fn]::before,[data-fbr]+[data-fn]::before,[data-fpair]+[data-fn]::before{content:'';position:absolute;left:16px;top:-10px;height:9px;width:2px;background:color-mix(in oklch,var(--mute) 45%,transparent)}
+[data-fi]{width:17px;height:17px;border-radius:6px;flex:none;display:grid;place-items:center;color:#fff;font-size:9px;font-weight:800}
+[data-fi="t"]{background:var(--accent)}[data-fi="a"]{background:#3b82f6}[data-fi="m"]{background:#16a34a}[data-fi="w"]{background:#7c3aed}[data-fi="c"]{background:#d97706}
+[data-fpair],[data-fbr]{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+[data-fbr]>div{display:flex;flex-direction:column}
+[data-fbr]>div>[data-fn]+[data-fn]{margin-top:7px}
+[data-fstat]{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:12px;font-weight:800;color:var(--accent-ink)}
+@media (prefers-reduced-motion:reduce){[data-rung]>div>span{animation:none}}
+@media (max-width:520px){[data-rung]{grid-template-columns:minmax(0,1fr) 44px}[data-rung]>div{grid-column:1/-1;grid-row:2}}
 @media (hover:none),(max-width:720px){
   [data-tmarquee]{overflow-x:auto !important;overflow-y:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scrollbar-width:none;align-items:stretch !important}
   [data-tmarquee]::-webkit-scrollbar{display:none}
@@ -147,6 +177,8 @@ article [data-devices]{max-width:420px;margin-inline:auto}
   [data-home-hero] h1{font-size:clamp(24px,2.35vw,36px) !important;margin-top:4px !important}
   [data-home-hero] p{font-size:13px !important;margin-top:4px !important;max-width:720px !important}
   [data-home-tools]{margin-top:10px !important;flex:none}
+  [data-proof]{margin-top:7px !important}
+  [data-proof]>span{padding:4px 10px !important}
   [data-home-tools]>div:first-child{padding:10px 16px !important}
   [data-home-tools]>div:last-child{padding:5px 0 !important}
   [data-home-grid]{flex:1;min-height:0;margin-top:10px !important;gap:12px !important;grid-template-rows:auto auto min-content;align-content:stretch}
@@ -317,6 +349,7 @@ aside{animation:om-fade .6s ease both}
           </div>
           <h1 style="font-size:clamp(26px,3vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1.08;margin:8px 0 0;text-wrap:pretty">BUILT TO CONVERT. <span style="color:var(--accent)">WIRED TO FOLLOW UP.</span></h1>
           <p style="font-size:14px;color:var(--mute);max-width:600px;margin:10px 0 0;text-wrap:pretty">Funnels, websites and automations that capture attention, convert visitors and keep every lead moving — without the manual chasing.</p>
+          <div data-proof="1"><span><b>669</b> orders across 3 launches</span><span><b>48%</b> took the upsell</span><span><b>7</b> high-ticket trust clients</span><button data-view="projects" onClick="{{ nav }}">See the results<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style="display:block"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button></div>
                   </div>
 
         <div data-home-tools="1" style="margin-top:18px;background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-sm),var(--hl);display:flex;align-items:center;gap:0;overflow:hidden">
@@ -548,7 +581,76 @@ aside{animation:om-fade .6s ease both}
         <h1 style="font-size:clamp(38px,4.6vw,58px);font-weight:800;letter-spacing:-.035em;line-height:1.04;margin:20px 0 0">Projects</h1>
         <p style="color:var(--mute);font-size:16px;max-width:660px;margin:14px 0 30px">Websites, landing pages and funnels built end to end — the live ones run in the laptops below, followed by sales pages, checkouts and upsells wired to the CRM behind them.</p>
 
+        <div style="display:flex;align-items:baseline;gap:4px 12px;flex-wrap:wrap;margin:0 0 16px">
+          <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">RESULTS</div>
+          <div style="font-weight:800;font-size:15px;letter-spacing:-.02em">What my launches actually did</div>
+        </div>
+        <div data-res="1" style="margin-bottom:18px;padding:20px 22px">
+          <div data-res-stats="1" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin-top:0"><div data-res-stat="1"><b>669</b><span>completed orders across three launches</span></div><div data-res-stat="1"><b>7,500+</b><span>enrollments across five launch waves</span></div><div data-res-stat="1"><b>48%</b><span>upsell take rate on the flash sale</span></div><div data-res-stat="1"><b>71%</b><span>of trust clients paid the full package price</span></div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:18px;margin-bottom:38px">
+          <article data-res="1">
+            <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink);position:relative">FLASH SALE FUNNEL · MATISSE ACADEMY</div>
+            <h3 style="font-size:26px;font-weight:800;letter-spacing:-.03em;margin:8px 0 6px;position:relative">Bearing the Kingship</h3>
+            <p style="color:var(--mute);font-size:13.5px;margin:0;position:relative">A low-ticket eBook with a bundle upsell and a full-library upgrade, pushed by five timed email and SMS waves.</p>
+            <div data-res-stats="1"><div data-res-stat="1"><b>413</b><span>completed orders</span></div><div data-res-stat="1"><b>4.3×</b><span>average spend vs. the entry price</span></div><div data-res-stat="1"><b>48%</b><span>of buyers took the bundle upsell</span></div><div data-res-stat="1"><b>13%</b><span>upgraded to the full library</span></div></div>
+            <div data-ladder="1"><div data-rung="1"><span>eBook</span><div><span style="width:100%"></span></div><em>100%</em></div><div data-rung="1"><span>Light Bundle upsell</span><div><span style="width:48%"></span></div><em>48%</em></div><div data-rung="1"><span>Full Library upgrade</span><div><span style="width:13%"></span></div><em>13%</em></div></div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:18px;position:relative"><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Order form</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Upsell</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Upgrade</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">5-wave launch</span></div>
+            <div style="font-size:11.5px;color:var(--mute);margin-top:12px;position:relative">252 buyers · Sep 4 – Oct 22, 2026 · completed orders in GoHighLevel, test orders removed</div>
+          </article>
+          <article data-res="1">
+            <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink);position:relative">EVENT FUNNEL · MATISSE ACADEMY</div>
+            <h3 style="font-size:26px;font-weight:800;letter-spacing:-.03em;margin:8px 0 6px;position:relative">Master Your Rights — 3-Day Bootcamp</h3>
+            <p style="color:var(--mute);font-size:13.5px;margin:0;position:relative">A redesigned challenge funnel: a general ticket, a VIP upgrade and automated confirmations for both, run on ads and the house list.</p>
+            <div data-res-stats="1"><div data-res-stat="1"><b>244</b><span>completed orders</span></div><div data-res-stat="1"><b>200</b><span>buyers</span></div><div data-res-stat="1"><b>23%</b><span>added the VIP upgrade</span></div><div data-res-stat="1"><b>152</b><span>orders from paid ads</span></div></div>
+            <div data-ladder="1"><div data-rung="1"><span>General ticket</span><div><span style="width:100%"></span></div><em>100%</em></div><div data-rung="1"><span>VIP upgrade</span><div><span style="width:23%"></span></div><em>23%</em></div></div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:18px;position:relative"><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Opt-in</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Sales page</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">VIP upsell</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Ads + organic</span></div>
+            <div style="font-size:11.5px;color:var(--mute);margin-top:12px;position:relative">Oct 1 – 24, 2026 run · completed orders in GoHighLevel, test orders removed</div>
+          </article>
+          <article data-res="1">
+            <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink);position:relative">HIGH-TICKET FUNNEL · MATISSE ACADEMY</div>
+            <h3 style="font-size:26px;font-weight:800;letter-spacing:-.03em;margin:8px 0 6px;position:relative">DFY Private Living Estate Trust</h3>
+            <p style="color:var(--mute);font-size:13.5px;margin:0;position:relative">A done-for-you trust offer sold through three entry points — the campaign page, an opt-in offer and a post-bootcamp checkout — with full-price and partial-payment paths wired into GoHighLevel.</p>
+            <div data-res-stats="1"><div data-res-stat="1"><b>7</b><span>trust clients closed through the funnels</span></div><div data-res-stat="1"><b>5</b><span>bought the full package</span></div><div data-res-stat="1"><b>3</b><span>entry points selling the same offer</span></div><div data-res-stat="1"><b>71%</b><span>paid the full package price</span></div></div>
+            <div data-ladder="1"><div data-rung="1"><span>Full package</span><div><span style="width:71%"></span></div><em>5</em></div><div data-rung="1"><span>Partial payment</span><div><span style="width:29%"></span></div><em>2</em></div></div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:18px;position:relative"><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Sales page</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Opt-in offer</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Checkout</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Payment paths</span></div>
+            <div style="font-size:11.5px;color:var(--mute);margin-top:12px;position:relative">Aug 18 – Nov 18, 2026 · completed orders in GoHighLevel, test orders removed</div>
+          </article>
+        </div>
+
         <div style="container-type:inline-size"><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(max(min(100%,340px),calc((100% - 36px) / 3)),1fr));gap:18px;margin-bottom:38px">
+          <article data-card="1" style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:18px;min-width:0;display:flex;flex-direction:column">
+            <div data-devices="1">
+              <div data-laptop="1" style="width:84%">
+                <div data-lp-lid="1"><div data-lp-screen="1"><iframe data-src="https://matisseacademy.com/upsell-light-bundle-page" title="Bearing the Kingship upsell — live site" loading="lazy" tabIndex="-1" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" referrerPolicy="no-referrer-when-downgrade"></iframe><button data-lp-overlay="1" aria-label="Explore Bearing the Kingship upsell inside the laptop"><span>Click to explore</span></button></div></div>
+                <div data-lp-base="1"></div>
+              </div>
+              <div data-phone="1"><div data-lp-screen="1" data-ph-screen="1"><iframe data-src="https://matisseacademy.com/upsell-light-bundle-page" title="Bearing the Kingship upsell — live site (mobile)" loading="lazy" tabIndex="-1" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" referrerPolicy="no-referrer-when-downgrade"></iframe><button data-lp-overlay="1" aria-label="Explore Bearing the Kingship upsell on mobile"><span>Explore</span></button></div></div>
+            </div>
+            <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink);margin-top:22px">FLASH SALE FUNNEL · MATISSE ACADEMY</div>
+            <h3 style="font-size:23px;font-weight:800;letter-spacing:-.025em;margin:8px 0 8px">Bearing the Kingship — Flash Sale</h3>
+            <p style="color:var(--mute);font-size:13.5px;margin:0">eBook sales page, Light Bundle upsell, Full Library upgrade and thank-you pages, with a five-wave email and SMS launch behind it. Shown: the Light Bundle upsell page.</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:auto;padding-top:16px">
+              <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Funnel</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Upsell</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Upgrade</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Automation</span></div>
+              <a href="https://matisseacademy.com/upsell-light-bundle-page" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);padding:9px 14px;border-radius:999px;font-weight:700;font-size:12.5px;line-height:1.15;white-space:nowrap;box-shadow:var(--hl)">Visit live site<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style="display:block"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+            </div>
+          </article>
+          <article data-card="1" style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:18px;min-width:0;display:flex;flex-direction:column">
+            <div data-devices="1">
+              <div data-laptop="1" style="width:84%">
+                <div data-lp-lid="1"><div data-lp-screen="1"><iframe data-src="https://matisseacademy.com/enroll-oct2026" title="Master Your Rights Bootcamp — live site" style="width:1180px;height:738px;transform:scale(tan(atan2(100cqw,1180px)))" loading="lazy" tabIndex="-1" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" referrerPolicy="no-referrer-when-downgrade"></iframe><button data-lp-overlay="1" aria-label="Explore Master Your Rights Bootcamp inside the laptop"><span>Click to explore</span></button></div></div>
+                <div data-lp-base="1"></div>
+              </div>
+              <div data-phone="1"><div data-lp-screen="1" data-ph-screen="1"><iframe data-src="https://matisseacademy.com/enroll-oct2026" title="Master Your Rights Bootcamp — live site (mobile)" loading="lazy" tabIndex="-1" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" referrerPolicy="no-referrer-when-downgrade"></iframe><button data-lp-overlay="1" aria-label="Explore Master Your Rights Bootcamp on mobile"><span>Explore</span></button></div></div>
+            </div>
+            <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink);margin-top:22px">EVENT FUNNEL · MATISSE ACADEMY</div>
+            <h3 style="font-size:23px;font-weight:800;letter-spacing:-.025em;margin:8px 0 8px">Master Your Rights — 3-Day Bootcamp</h3>
+            <p style="color:var(--mute);font-size:13.5px;margin:0">Opt-in, tiered-ticket sales page, VIP upsell and thank-you pages for the October bootcamp, run on ads and the house list. Shown: the enrollment page.</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:auto;padding-top:16px">
+              <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Funnel</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Sales page</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">VIP upsell</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Ads</span></div>
+              <a href="https://matisseacademy.com/enroll-oct2026" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);padding:9px 14px;border-radius:999px;font-weight:700;font-size:12.5px;line-height:1.15;white-space:nowrap;box-shadow:var(--hl)">Visit live site<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style="display:block"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+            </div>
+          </article>
           <article data-card="1" style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:18px;min-width:0;display:flex;flex-direction:column">
             <div data-devices="1">
               <div data-laptop="1" style="width:84%">
@@ -1178,7 +1280,44 @@ aside{animation:om-fade .6s ease both}
 
         <div style="display:flex;align-items:baseline;gap:4px 12px;flex-wrap:wrap;margin:0 0 16px">
           <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">SUITE 01</div>
+          <div style="font-weight:800;font-size:15px;letter-spacing:-.02em">Bearing the Kingship — flash sale</div>
+          <div style="font-size:12.5px;font-weight:700;color:var(--mute)">413 orders · 48% upsell take rate</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:34px">
+          <article data-card="1" style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:16px;display:flex;flex-direction:column">
+            <div data-wf="1"><div data-fn="1"><span data-fi="t">◆</span><div>Contact tag<small>Wave segment</small></div></div><div data-fn="1"><span data-fi="a">≋</span><div>Drip mode<small>Throttled sending</small></div></div><div data-fn="1"><span data-fi="m">✉</span><div>Email 1 · Launch<small>Fri 6 PM ET</small></div></div><div data-fn="1"><span data-fi="m">✆</span><div>SMS · Launch<small>+10 min</small></div></div><div data-fn="1"><span data-fi="m">✉</span><div>Email 2 · Saturday bridge</div></div><div data-fn="1"><span data-fi="m">✉</span><div>Email 3 · Closing today<small>Sun 9 AM ET</small></div></div><div data-fn="1"><span data-fi="m">✆</span><div>SMS · Final hours<small>Sun 6 PM ET</small></div></div></div>
+            <div style="display:flex;align-items:center;gap:9px;margin-top:16px"><span style="font-size:11px;font-weight:800;color:var(--mute)">01</span><span style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">GOHIGHLEVEL WORKFLOW</span></div>
+            <h3 style="font-size:19px;font-weight:800;letter-spacing:-.025em;margin:8px 0 8px">Bearing Flash — Launch waves (1–5)</h3>
+            <p style="color:var(--mute);font-size:13.5px;margin:0">Five timed launch waves. Wave 5, shown here, starts from a segment tag, throttles sending with drip mode, then sends launch, Saturday bridge, closing-day and final-hours emails and SMS on a fixed weekend schedule.</p>
+            <div data-fstat="1" style="margin-top:auto;padding-top:12px">Up to 3,021 enrolled per wave</div>
+          </article>
+          <article data-card="1" style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:16px;display:flex;flex-direction:column">
+            <div data-wf="1"><div data-fn="1"><span data-fi="t">◆</span><div>Order form submitted<small>eBook</small></div></div><div data-fn="1"><span data-fi="a">✕</span><div>Remove from workflow<small>Exit path</small></div></div><div data-fn="1"><span data-fi="a">#</span><div>Add buyer tag</div></div><div data-fn="1"><span data-fi="m">✆</span><div>SMS confirmation</div></div><div data-fn="1"><span data-fi="a">$</span><div>Create or update opportunity</div></div></div>
+            <div style="display:flex;align-items:center;gap:9px;margin-top:16px"><span style="font-size:11px;font-weight:800;color:var(--mute)">02</span><span style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">GOHIGHLEVEL WORKFLOW</span></div>
+            <h3 style="font-size:19px;font-weight:800;letter-spacing:-.025em;margin:8px 0 8px">Bearing the Kingship Flash Sale — Purchase</h3>
+            <p style="color:var(--mute);font-size:13.5px;margin:0">Each eBook order removes the buyer from the running workflow, tags them, confirms by SMS and creates their opportunity in the pipeline.</p>
+            <div data-fstat="1" style="margin-top:auto;padding-top:12px">232 enrolled</div>
+          </article>
+          <article data-card="1" style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:16px;display:flex;flex-direction:column">
+            <div data-wf="1"><div data-fn="1"><span data-fi="t">◆</span><div>Order form submitted<small>Light Bundle</small></div></div><div data-fn="1"><span data-fi="a">#</span><div>Add upsell tag</div></div><div data-fn="1"><span data-fi="m">✆</span><div>SMS confirmation</div></div><div data-fn="1"><span data-fi="a">$</span><div>Update opportunity</div></div><div data-fn="1"><span data-fi="a">▣</span><div>Grant course access<small>Light Bundle</small></div></div></div>
+            <div style="display:flex;align-items:center;gap:9px;margin-top:16px"><span style="font-size:11px;font-weight:800;color:var(--mute)">03</span><span style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">GOHIGHLEVEL WORKFLOW</span></div>
+            <h3 style="font-size:19px;font-weight:800;letter-spacing:-.025em;margin:8px 0 8px">Bearing Flash — Upsell Purchase (Light Bundle)</h3>
+            <p style="color:var(--mute);font-size:13.5px;margin:0">The upsell order tags the buyer, confirms by SMS, updates the opportunity and unlocks the Light Bundle course on its own.</p>
+            <div data-fstat="1" style="margin-top:auto;padding-top:12px">127 enrolled</div>
+          </article>
+          <article data-card="1" style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:16px;display:flex;flex-direction:column">
+            <div data-wf="1"><div data-fpair="1"><div data-fn="1"><span data-fi="t">◆</span><div>Order form<small>Full Library</small></div></div><div data-fn="1"><span data-fi="t">◆</span><div>Full-access tag<small>Manual grant</small></div></div></div><div data-fn="1"><span data-fi="c">?</span><div>Condition<small>Which trigger fired?</small></div></div><div data-fbr="1"><div><div data-fn="1"><span data-fi="a">#</span><div>Tag</div></div><div data-fn="1"><span data-fi="m">✆</span><div>SMS</div></div><div data-fn="1"><span data-fi="a">$</span><div>Opportunity</div></div></div><div><div data-fn="1"><span data-fi="a">▣</span><div>Grant Full Library<small>Course access</small></div></div></div></div></div>
+            <div style="display:flex;align-items:center;gap:9px;margin-top:16px"><span style="font-size:11px;font-weight:800;color:var(--mute)">04</span><span style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">GOHIGHLEVEL WORKFLOW</span></div>
+            <h3 style="font-size:19px;font-weight:800;letter-spacing:-.025em;margin:8px 0 8px">Bearing Flash — Upgrade Purchase (Full Library)</h3>
+            <p style="color:var(--mute);font-size:13.5px;margin:0">Two triggers feed one condition: a paid upgrade runs tag, SMS and opportunity, while a manual full-access tag just grants the library.</p>
+            <div data-fstat="1" style="margin-top:auto;padding-top:12px">63 enrolled</div>
+          </article>
+        </div>
+
+        <div style="display:flex;align-items:baseline;gap:4px 12px;flex-wrap:wrap;margin:0 0 16px">
+          <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">SUITE 02</div>
           <div style="font-weight:800;font-size:15px;letter-spacing:-.02em">DFY Private Living Estate Trust — bundle</div>
+          <div style="font-size:12.5px;font-weight:700;color:var(--mute)">7 trust clients · 5 full packages</div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px">
           <article data-card="1" style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:16px">
@@ -1226,7 +1365,7 @@ aside{animation:om-fade .6s ease both}
         </div>
 
         <div style="display:flex;align-items:baseline;gap:12px;margin:34px 0 16px">
-          <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">SUITE 02</div>
+          <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">SUITE 03</div>
           <div style="font-weight:800;font-size:15px;letter-spacing:-.02em">EM — Master Your Rights event</div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px">
@@ -1251,7 +1390,7 @@ aside{animation:om-fade .6s ease both}
         </div>
 
         <div style="display:flex;align-items:baseline;gap:12px;margin:34px 0 16px">
-          <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">SUITE 03</div>
+          <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">SUITE 04</div>
           <div style="font-weight:800;font-size:15px;letter-spacing:-.02em">Dr. V’s Tree of Life — Community waitlist</div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px">
