@@ -76,11 +76,9 @@ a:hover{color:var(--accent)}
 [data-tmarquee]{-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
 [data-tmarquee] [data-card]:hover{transform:translateY(-4px)}
 @media (hover:none),(max-width:720px){
-  [data-tmarquee]{overflow-x:auto !important;overflow-y:hidden;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scroll-padding-left:16px;overscroll-behavior-x:contain;touch-action:pan-x pan-y;scrollbar-width:none;align-items:stretch !important}
+  [data-tmarquee]{overflow-x:auto !important;overflow-y:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scrollbar-width:none;align-items:stretch !important}
   [data-tmarquee]::-webkit-scrollbar{display:none}
-  [data-tmarquee] [data-marquee]{animation:none !important;transform:none !important;padding-right:2px}
-  [data-tmarquee] [data-card]{scroll-snap-align:start}
-  [data-tmarquee] [data-card][aria-hidden="true"]{display:none !important}
+  [data-tmarquee] [data-marquee]{animation:none !important;transform:none !important}
   [data-tmarquee] [data-card]:hover{transform:none}
 }
 @media (prefers-reduced-motion:reduce){[data-vmarquee]{animation:none}[data-vmarquee-vp]{overflow-y:auto}[data-marquee-vp]{overflow-x:auto}}
@@ -1408,6 +1406,49 @@ class Component extends DCLogic {
   }
 }
 
+</script>
+<script>
+/* Mobile testimonials: keep auto-scrolling, but let visitors swipe. */
+(function(){
+  var mq=window.matchMedia('(hover:none),(max-width:720px)');
+  var rm=window.matchMedia('(prefers-reduced-motion:reduce)');
+  var CYCLE=70; /* seconds per loop, same as desktop */
+  var RESUME=1500; /* ms after the last swipe before auto-scroll resumes */
+  var state=new WeakMap();
+  function setup(vp){
+    var s={pos:null,hold:false,last:0,rev:!!(vp.firstElementChild&&/reverse/.test(vp.firstElementChild.style.animationDirection||''))};
+    function grab(){s.hold=true;s.last=performance.now();}
+    function release(){s.hold=false;s.last=performance.now();}
+    vp.addEventListener('touchstart',grab,{passive:true});
+    vp.addEventListener('touchend',release,{passive:true});
+    vp.addEventListener('touchcancel',release,{passive:true});
+    vp.addEventListener('pointerdown',grab,{passive:true});
+    vp.addEventListener('pointerup',release,{passive:true});
+    vp.addEventListener('wheel',function(){s.last=performance.now();},{passive:true});
+    vp.addEventListener('scroll',function(){if(s.hold||performance.now()-s.last<RESUME)s.last=performance.now();},{passive:true});
+    state.set(vp,s);return s;
+  }
+  var prev=0;
+  function tick(t){
+    var dt=prev?Math.min((t-prev)/1000,0.1):0;prev=t;
+    if(mq.matches&&!rm.matches){
+      var vps=document.querySelectorAll('[data-tmarquee]');
+      for(var i=0;i<vps.length;i++){
+        var vp=vps[i],mk=vp.firstElementChild,half=mk?mk.offsetWidth/2:0;
+        if(!half||vp.scrollWidth<=vp.clientWidth)continue;
+        var s=state.get(vp)||setup(vp);
+        if(s.hold||t-s.last<RESUME){s.pos=null;continue;}
+        if(s.pos===null)s.pos=vp.scrollLeft||(s.rev?half:0);
+        s.pos+=(s.rev?-1:1)*(half/CYCLE)*dt;
+        if(s.pos>=half)s.pos-=half;
+        if(s.pos<=0)s.pos+=half;
+        vp.scrollLeft=s.pos;
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
 </script>
 </body>
 </html>
