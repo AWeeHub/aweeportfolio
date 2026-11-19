@@ -75,6 +75,36 @@ a:hover{color:var(--accent)}
 [data-vmarquee]:hover{animation-play-state:paused}
 [data-tmarquee]{-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
 [data-tmarquee] [data-card]:hover{transform:translateY(-4px)}
+/* Results + flow diagrams */
+@keyframes om-bar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+[data-res]{background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-sm),var(--hl);padding:22px;min-width:0;display:flex;flex-direction:column;position:relative;overflow:hidden}
+[data-res]::before{content:'';position:absolute;inset:-40% -20% auto auto;width:70%;height:90%;background:radial-gradient(closest-side,color-mix(in oklch,var(--accent) 22%,transparent),transparent);pointer-events:none}
+[data-res-stats]{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px;position:relative}
+[data-res-stat]{background:var(--panel2);border:1px solid var(--line);border-radius:16px;padding:14px 14px 12px}
+[data-res-stat] b{display:block;font-size:clamp(30px,3.4vw,42px);font-weight:800;letter-spacing:-.04em;line-height:1;background:linear-gradient(160deg,var(--accent2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+[data-res-stat] span{display:block;font-size:12.5px;color:var(--mute);margin-top:7px;line-height:1.35}
+[data-ladder]{margin-top:18px;display:flex;flex-direction:column;gap:9px;position:relative}
+[data-rung]{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr) 44px;align-items:center;gap:10px;font-size:12.5px;font-weight:700}
+[data-rung]>div{height:10px;border-radius:999px;background:var(--inset);overflow:hidden}
+[data-rung]>div>span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent2),var(--accent));transform-origin:left;animation:om-bar 1.2s cubic-bezier(.2,.7,.3,1) both .2s}
+[data-rung]>em{font-style:normal;text-align:right;color:var(--accent-ink);font-weight:800}
+[data-proof]{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+[data-proof]>span{display:inline-flex;align-items:baseline;gap:6px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:12px;color:var(--mute);box-shadow:var(--hl)}
+[data-proof]>span b{color:var(--accent-ink);font-size:13.5px;font-weight:800}
+[data-proof]>button{border:0;background:none;color:var(--accent-ink);font:800 12px/1.2 'Plus Jakarta Sans',system-ui,sans-serif;cursor:pointer;padding:6px 4px;display:inline-flex;align-items:center;gap:6px}
+[data-flow]{min-height:250px;border-radius:14px;border:1px solid var(--line2);background:var(--inset) radial-gradient(color-mix(in oklch,var(--mute) 28%,transparent) 1px,transparent 1.2px) 0 0/14px 14px;padding:14px 12px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+[data-fn]{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px 9px;position:relative;line-height:1.25;min-width:0}
+[data-fn] small{display:block;font-size:10px;font-weight:600;color:var(--mute)}
+[data-fn]+[data-fn],[data-fbr]+[data-fn],[data-fn]+[data-fbr],[data-fpair]+[data-fn]{margin-top:9px}
+[data-fn]+[data-fn]::before,[data-fbr]+[data-fn]::before,[data-fpair]+[data-fn]::before{content:'';position:absolute;left:16px;top:-10px;height:9px;width:2px;background:color-mix(in oklch,var(--mute) 45%,transparent)}
+[data-fi]{width:17px;height:17px;border-radius:6px;flex:none;display:grid;place-items:center;color:#fff;font-size:9px;font-weight:800}
+[data-fi="t"]{background:var(--accent)}[data-fi="a"]{background:#3b82f6}[data-fi="m"]{background:#16a34a}[data-fi="w"]{background:#7c3aed}[data-fi="c"]{background:#d97706}
+[data-fpair],[data-fbr]{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+[data-fbr]>div{display:flex;flex-direction:column}
+[data-fbr]>div>[data-fn]+[data-fn]{margin-top:7px}
+[data-fstat]{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:12px;font-weight:800;color:var(--accent-ink)}
+@media (prefers-reduced-motion:reduce){[data-rung]>div>span{animation:none}}
+@media (max-width:520px){[data-rung]{grid-template-columns:minmax(0,1fr) 44px}[data-rung]>div{grid-column:1/-1;grid-row:2}}
 @media (hover:none),(max-width:720px){
   [data-tmarquee]{overflow-x:auto !important;overflow-y:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scrollbar-width:none;align-items:stretch !important}
   [data-tmarquee]::-webkit-scrollbar{display:none}
@@ -147,6 +177,8 @@ article [data-devices]{max-width:420px;margin-inline:auto}
   [data-home-hero] h1{font-size:clamp(24px,2.35vw,36px) !important;margin-top:4px !important}
   [data-home-hero] p{font-size:13px !important;margin-top:4px !important;max-width:720px !important}
   [data-home-tools]{margin-top:10px !important;flex:none}
+  [data-proof]{margin-top:7px !important}
+  [data-proof]>span{padding:4px 10px !important}
   [data-home-tools]>div:first-child{padding:10px 16px !important}
   [data-home-tools]>div:last-child{padding:5px 0 !important}
   [data-home-grid]{flex:1;min-height:0;margin-top:10px !important;gap:12px !important;grid-template-rows:auto auto min-content;align-content:stretch}
@@ -317,6 +349,7 @@ aside{animation:om-fade .6s ease both}
           </div>
           <h1 style="font-size:clamp(26px,3vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1.08;margin:8px 0 0;text-wrap:pretty">BUILT TO CONVERT. <span style="color:var(--accent)">WIRED TO FOLLOW UP.</span></h1>
           <p style="font-size:14px;color:var(--mute);max-width:600px;margin:10px 0 0;text-wrap:pretty">Funnels, websites and automations that capture attention, convert visitors and keep every lead moving — without the manual chasing.</p>
+          <div data-proof="1"><span><b>445</b> orders from one $9.97 flash sale</span><span><b>49%</b> took the upsell</span><span><b>4.7×</b> average spend per buyer</span><button data-view="projects" onClick="{{ nav }}">See the results<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style="display:block"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button></div>
                   </div>
 
         <div data-home-tools="1" style="margin-top:18px;background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-sm),var(--hl);display:flex;align-items:center;gap:0;overflow:hidden">
@@ -547,6 +580,31 @@ aside{animation:om-fade .6s ease both}
         <button data-view="home" onClick="{{ nav }}" style="border:1px solid var(--line);background:var(--panel);color:var(--ink2);border-radius:999px;padding:8px 14px;font-weight:700;font-size:12px;line-height:1.15;font-family:'Plus Jakarta Sans',system-ui,sans-serif;white-space:nowrap;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:var(--shadow-sm),var(--hl)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style="display:block"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>Back</button>
         <h1 style="font-size:clamp(38px,4.6vw,58px);font-weight:800;letter-spacing:-.035em;line-height:1.04;margin:20px 0 0">Projects</h1>
         <p style="color:var(--mute);font-size:16px;max-width:660px;margin:14px 0 30px">Websites, landing pages and funnels built end to end — the live ones run in the laptops below, followed by sales pages, checkouts and upsells wired to the CRM behind them.</p>
+
+        <div style="display:flex;align-items:baseline;gap:4px 12px;flex-wrap:wrap;margin:0 0 16px">
+          <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">RESULTS</div>
+          <div style="font-weight:800;font-size:15px;letter-spacing:-.02em">What two of my launches actually did</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:18px;margin-bottom:38px">
+          <article data-res="1">
+            <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink);position:relative">FLASH SALE FUNNEL · MATISSE ACADEMY</div>
+            <h3 style="font-size:26px;font-weight:800;letter-spacing:-.03em;margin:8px 0 6px;position:relative">Bearing the Kingship</h3>
+            <p style="color:var(--mute);font-size:13.5px;margin:0;position:relative">A $9.97 eBook with a $27 bundle upsell and a $147 full-library upgrade, pushed by five timed email and SMS waves.</p>
+            <div data-res-stats="1"><div data-res-stat="1"><b>445</b><span>completed orders</span></div><div data-res-stat="1"><b>4.7×</b><span>average spend vs. the $9.97 entry price</span></div><div data-res-stat="1"><b>49%</b><span>of buyers took the $27 upsell</span></div><div data-res-stat="1"><b>14%</b><span>upgraded to the $147 library</span></div></div>
+            <div data-ladder="1"><div data-rung="1"><span>$9.97 eBook</span><div><span style="width:100%"></span></div><em>100%</em></div><div data-rung="1"><span>$27 Light Bundle</span><div><span style="width:49%"></span></div><em>49%</em></div><div data-rung="1"><span>$147 Full Library</span><div><span style="width:14%"></span></div><em>14%</em></div></div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:18px;position:relative"><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Order form</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Upsell</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Upgrade</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">5-wave launch</span></div>
+            <div style="font-size:11.5px;color:var(--mute);margin-top:12px;position:relative">259 buyers · Sep 4 – Oct 22, 2026 · completed orders in GoHighLevel</div>
+          </article>
+          <article data-res="1">
+            <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink);position:relative">EVENT FUNNEL · MATISSE ACADEMY</div>
+            <h3 style="font-size:26px;font-weight:800;letter-spacing:-.03em;margin:8px 0 6px;position:relative">Master Your Rights — 3-Day Bootcamp</h3>
+            <p style="color:var(--mute);font-size:13.5px;margin:0;position:relative">A redesigned challenge funnel: $27 ticket, a $50 VIP upgrade and automated confirmations for both, run on ads and the house list.</p>
+            <div data-res-stats="1"><div data-res-stat="1"><b>244</b><span>completed orders in three weeks</span></div><div data-res-stat="1"><b>200</b><span>buyers</span></div><div data-res-stat="1"><b>23%</b><span>added the $50 VIP upgrade</span></div><div data-res-stat="1"><b>152</b><span>orders from paid ads</span></div></div>
+            <div data-ladder="1"><div data-rung="1"><span>$27 ticket</span><div><span style="width:100%"></span></div><em>100%</em></div><div data-rung="1"><span>$50 VIP upgrade</span><div><span style="width:23%"></span></div><em>23%</em></div></div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:18px;position:relative"><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Opt-in</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Sales page</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">VIP upsell</span><span style="border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:6px 11px;font-size:11.5px;font-weight:700">Ads + organic</span></div>
+            <div style="font-size:11.5px;color:var(--mute);margin-top:12px;position:relative">Oct 1 – 24, 2026 run · completed orders in GoHighLevel</div>
+          </article>
+        </div>
 
         <div style="container-type:inline-size"><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(max(min(100%,340px),calc((100% - 36px) / 3)),1fr));gap:18px;margin-bottom:38px">
           <article data-card="1" style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:18px;min-width:0;display:flex;flex-direction:column">
@@ -1178,6 +1236,42 @@ aside{animation:om-fade .6s ease both}
 
         <div style="display:flex;align-items:baseline;gap:4px 12px;flex-wrap:wrap;margin:0 0 16px">
           <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">SUITE 01</div>
+          <div style="font-weight:800;font-size:15px;letter-spacing:-.02em">Bearing the Kingship — flash sale</div>
+          <div style="font-size:12.5px;font-weight:700;color:var(--mute)">445 orders · 49% upsell take rate</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:34px">
+          <article data-card="1" style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:16px;display:flex;flex-direction:column">
+            <div data-flow="1"><div data-fn="1"><span data-fi="t">◆</span><div>Contact tag<small>Wave segment</small></div></div><div data-fn="1"><span data-fi="a">≋</span><div>Drip mode<small>Throttled sending</small></div></div><div data-fn="1"><span data-fi="m">✉</span><div>Email 1 · Launch<small>Fri 6 PM ET</small></div></div><div data-fn="1"><span data-fi="m">✆</span><div>SMS · Launch<small>+10 min</small></div></div><div data-fn="1"><span data-fi="m">✉</span><div>Email 2 · Saturday bridge</div></div><div data-fn="1"><span data-fi="m">✉</span><div>Email 3 · Closing today<small>Sun 9 AM ET</small></div></div><div data-fn="1"><span data-fi="m">✆</span><div>SMS · Final hours<small>Sun 6 PM ET</small></div></div></div>
+            <div style="display:flex;align-items:center;gap:9px;margin-top:16px"><span style="font-size:11px;font-weight:800;color:var(--mute)">01</span><span style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">GOHIGHLEVEL WORKFLOW</span></div>
+            <h3 style="font-size:19px;font-weight:800;letter-spacing:-.025em;margin:8px 0 8px">Bearing Flash — Launch waves (1–5)</h3>
+            <p style="color:var(--mute);font-size:13.5px;margin:0">Five timed waves, each triggered by a segment tag. Drip mode throttles the sends, then launch, bridge, closing-day and final-hours emails and SMS go out on a fixed weekend schedule.</p>
+            <div data-fstat="1" style="margin-top:auto;padding-top:12px">Up to 3,021 contacts per wave</div>
+          </article>
+          <article data-card="1" style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:16px;display:flex;flex-direction:column">
+            <div data-flow="1"><div data-fn="1"><span data-fi="t">◆</span><div>Order form submitted<small>$9.97 eBook</small></div></div><div data-fn="1"><span data-fi="a">✕</span><div>Remove from workflow<small>Exit path</small></div></div><div data-fn="1"><span data-fi="a">#</span><div>Add buyer tag</div></div><div data-fn="1"><span data-fi="m">✆</span><div>SMS confirmation</div></div><div data-fn="1"><span data-fi="a">$</span><div>Create or update opportunity</div></div></div>
+            <div style="display:flex;align-items:center;gap:9px;margin-top:16px"><span style="font-size:11px;font-weight:800;color:var(--mute)">02</span><span style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">GOHIGHLEVEL WORKFLOW</span></div>
+            <h3 style="font-size:19px;font-weight:800;letter-spacing:-.025em;margin:8px 0 8px">Bearing the Kingship Flash Sale — Purchase</h3>
+            <p style="color:var(--mute);font-size:13.5px;margin:0">Each $9.97 eBook order removes the buyer from the running workflow, tags them, confirms by SMS and creates their opportunity in the pipeline.</p>
+            <div data-fstat="1" style="margin-top:auto;padding-top:12px">232 buyers enrolled</div>
+          </article>
+          <article data-card="1" style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:16px;display:flex;flex-direction:column">
+            <div data-flow="1"><div data-fn="1"><span data-fi="t">◆</span><div>Order form submitted<small>$27 Light Bundle</small></div></div><div data-fn="1"><span data-fi="a">#</span><div>Add upsell tag</div></div><div data-fn="1"><span data-fi="m">✆</span><div>SMS confirmation</div></div><div data-fn="1"><span data-fi="a">$</span><div>Update opportunity</div></div><div data-fn="1"><span data-fi="a">▣</span><div>Grant course access<small>Light Bundle</small></div></div></div>
+            <div style="display:flex;align-items:center;gap:9px;margin-top:16px"><span style="font-size:11px;font-weight:800;color:var(--mute)">03</span><span style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">GOHIGHLEVEL WORKFLOW</span></div>
+            <h3 style="font-size:19px;font-weight:800;letter-spacing:-.025em;margin:8px 0 8px">Bearing Flash — Upsell Purchase (Light Bundle)</h3>
+            <p style="color:var(--mute);font-size:13.5px;margin:0">The $27 upsell order tags the buyer, confirms by SMS, updates the opportunity and unlocks the Light Bundle course on its own.</p>
+            <div data-fstat="1" style="margin-top:auto;padding-top:12px">127 upsell buyers enrolled</div>
+          </article>
+          <article data-card="1" style="background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm),var(--hl);padding:16px;display:flex;flex-direction:column">
+            <div data-flow="1"><div data-fpair="1"><div data-fn="1"><span data-fi="t">◆</span><div>Order form<small>$147 upgrade</small></div></div><div data-fn="1"><span data-fi="t">◆</span><div>Full-access tag<small>Manual grant</small></div></div></div><div data-fn="1"><span data-fi="c">?</span><div>Condition<small>Which trigger fired?</small></div></div><div data-fbr="1"><div><div data-fn="1"><span data-fi="a">#</span><div>Tag</div></div><div data-fn="1"><span data-fi="m">✆</span><div>SMS</div></div><div data-fn="1"><span data-fi="a">$</span><div>Opportunity</div></div></div><div><div data-fn="1"><span data-fi="a">▣</span><div>Grant Full Library<small>Course access</small></div></div></div></div></div>
+            <div style="display:flex;align-items:center;gap:9px;margin-top:16px"><span style="font-size:11px;font-weight:800;color:var(--mute)">04</span><span style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">GOHIGHLEVEL WORKFLOW</span></div>
+            <h3 style="font-size:19px;font-weight:800;letter-spacing:-.025em;margin:8px 0 8px">Bearing Flash — Upgrade Purchase (Full Library)</h3>
+            <p style="color:var(--mute);font-size:13.5px;margin:0">Two triggers feed one condition: a paid $147 upgrade runs tag, SMS and opportunity, while a manual full-access tag just grants the library.</p>
+            <div data-fstat="1" style="margin-top:auto;padding-top:12px">63 upgrades enrolled</div>
+          </article>
+        </div>
+
+        <div style="display:flex;align-items:baseline;gap:4px 12px;flex-wrap:wrap;margin:0 0 16px">
+          <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">SUITE 02</div>
           <div style="font-weight:800;font-size:15px;letter-spacing:-.02em">DFY Private Living Estate Trust — bundle</div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px">
@@ -1226,7 +1320,7 @@ aside{animation:om-fade .6s ease both}
         </div>
 
         <div style="display:flex;align-items:baseline;gap:12px;margin:34px 0 16px">
-          <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">SUITE 02</div>
+          <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">SUITE 03</div>
           <div style="font-weight:800;font-size:15px;letter-spacing:-.02em">EM — Master Your Rights event</div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px">
@@ -1251,7 +1345,7 @@ aside{animation:om-fade .6s ease both}
         </div>
 
         <div style="display:flex;align-items:baseline;gap:12px;margin:34px 0 16px">
-          <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">SUITE 03</div>
+          <div style="font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)">SUITE 04</div>
           <div style="font-weight:800;font-size:15px;letter-spacing:-.02em">Dr. V’s Tree of Life — Community waitlist</div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px">
